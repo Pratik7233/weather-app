@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+  
+  body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('/src/assets/weather.jpg') no-repeat center center/cover;
+  }
+  
+  .container {
+    width: 400px;
+    background-color: #f3f3f3;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .search-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-box input {
+    width: 80%;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .search-box button {
+    background-color: #4caf50;
+    color: white;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .search-box button:hover {
+    background-color: #45a049;
+  }
+  
+  .location-not-found {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .location-not-found img {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .weather-body {
+    display: none;
+    text-align: center;
+  }
+  
+  .weather-img {
+    width: 40%;
+    margin: 10px auto;
+    background-color: rgb(224, 245, 238);
+  }
+  
+  .weather-box {
+    margin: 20px 0;
+  }
+  
+  .temperature {
+    font-size: 36px;
+    font-weight: bold;
+  }
+  
+  .description {
+    font-size: 18px;
+    text-transform: capitalize;
+  }
+  
+  .weather-details {
+    display: flex;
+    justify-content: space-around;
+    padding-left: 10px;
+  }
+  
+  .weather-details .humidity,
+  .weather-details .wind {
+    text-align: center;
+    padding-right: 10px;
+  }
+  
+  .weather-details i {
+    font-size: 24px;
+    color: #4caf50;
+  }
+  
+  .weather-details .text span {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .forecast {
+    margin-top: 20px;
+  }
+  
+  .forecast h2 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .forecast-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 380px;
+    
+  }
+  
+  .forecast-card {
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    width: 25%;
+    margin: 5px 0;
+    text-align: center;
+  }
+  
+  .forecast-card img {
+    width: 50px;
+   height:50px;
+  }
