@@ -7,22 +7,18 @@ const humidity = document.getElementById('humidity');
 const wind_speed = document.getElementById('wind-speed');
 const location_not_found = document.querySelector('.location-not-found');
 const weather_body = document.querySelector('.weather-body');
-const forecastContainer = document.getElementById('forecast-container');
-
-const api_key = "19bc67d14ef260b094fd3891b9cf2f63";
 
 async function checkWeather(city) {
-  const weather_url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`;
-  const forecast_url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${api_key}`;
+  const api_key = "19bc67d14ef260b094fd3891b9cf2f63";
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`;
 
   try {
-    const weather_response = await fetch(weather_url);
-    const weather_data = await weather_response.json();
+    const response = await fetch(url);
+    const weather_data = await response.json();
 
     if (weather_data.cod === '404') {
       location_not_found.style.display = "flex";
       weather_body.style.display = "none";
-      forecastContainer.innerHTML = "";
       return;
     }
 
@@ -36,45 +32,26 @@ async function checkWeather(city) {
 
     switch (weather_data.weather[0].main) {
       case 'Clouds':
-        weather_img.src = "/src/assets/cloud.png";
+        weather_img.src = "C:/Users/Admin/whether/src/assets/cloud.png";
         break;
       case 'Clear':
-        weather_img.src = "/src/assets/clear.png";
+        weather_img.src = "C:/Users/Admin/whether/src/assets/clear.png";
         break;
       case 'Rain':
-        weather_img.src = "/src/assets/rain.png";
+        weather_img.src = "C:/Users/Admin/whether/src/assets/rain.png";
         break;
       case 'Mist':
-        weather_img.src = "/src/assets/mist.png";
+        weather_img.src = "C:/Users/Admin/whether/src/assets/mist.png";
         break;
       case 'Snow':
-        weather_img.src = "/src/assets/snow.png";
+        weather_img.src = "C:/Users/Admin/whether/src/assets/snow.png";
         break;
       default:
-        weather_img.src = "/src/assets/default.png";
+        weather_img.src = "C:/Users/Admin/whether/src/assets/default.png";
+        break;
     }
-
-    const forecast_response = await fetch(forecast_url);
-    const forecast_data = await forecast_response.json();
-    updateForecast(forecast_data.list);
   } catch (error) {
     console.error("Error fetching weather data:", error);
-  }
-}
-
-function updateForecast(forecastList) {
-  forecastContainer.innerHTML = "";
-  for (let i = 0; i < forecastList.length; i += 8) {
-    const day = forecastList[i];
-    const card = document.createElement("div");
-    card.className = "forecast-card";
-    card.innerHTML = `
-      <p>${new Date(day.dt * 1000).toLocaleDateString()}</p>
-      <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png" alt="${day.weather[0].description}">
-      <p>${Math.round(day.main.temp - 273.15)}°C</p>
-      <p>${day.weather[0].description}</p>
-    `;
-    forecastContainer.appendChild(card);
   }
 }
 
